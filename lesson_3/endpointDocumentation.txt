@@ -1,0 +1,145 @@
+6 Endpoints
+
+1. Login - POST
+    Address: http://3.15.140.118:3001/api/v1/login
+
+    Requirement to Access:
+    Json format:
+        Example Input:
+            {
+            "email": "example@gmail.com",
+            "password": "p@assword123"
+            }
+        
+        Responses:
+            "No user"
+                {
+                "message": "User not found or invalid login credentials"
+                }
+            "Empty one or more fields"
+                {
+                "error": true,
+                "message": "Please provide email and password"
+                }
+            "Success Login" 
+                {
+                "error": false,
+                "message": "Member Login successful",
+                "data": {
+                    "first_name": "Rochi",
+                    "last_name": "Ro",
+                    "middle_name": "Bro",
+                    "email_add": "hey",
+                    "birthdate": "2003-08-13T00:00:00.000Z",
+                    "gender": "Male",
+                    "contactnum": 9562383090,
+                    "fb_name": "Rochi Ro",
+                    "agency": "Talaghay",
+                    "occupation": "Software Developer",
+                    "address_abroad": "Ontario",
+                    "cur_country": "Canda",
+                    "relative": "Eren",
+                    "relative_num": 9123456789,
+                    "account_type_id": 1
+                }
+            }
+
+
+2. Signup - POST
+    Address: http://3.15.140.118:3001/api/v1/signup
+
+    Requirement to Access:
+    Json format:
+        Example Input:
+            {
+            "email": "example@gmail.com",
+            "password": "p@assword123"
+            }
+        
+        Responses:
+            "Successful Signup"
+                {
+                "error": false,
+                "message": "User added successfully!",
+                "data": 2
+                }
+            "Empty one or more fields"
+                {
+                "error": true,
+                "message": "Please provide all required fields (one or more fields are empty!)"
+                }
+            "Registers to same email"
+                {
+                "error": true,
+                "message": "Email has already been registered "
+                }
+
+3. Login Admin - POST
+    Address: http://3.15.140.118:3001/api/v1/login/admin
+
+        SAME RESPONSES FROM ABOVE THIS CAN BE USED FOR ADMIN PURPOSES
+
+4. Signup Admin - POST
+    Address: http://3.15.140.118:3001/api/v1/signup/admin
+
+         SAME RESPONSES FROM ABOVE THIS CAN BE USED FOR ADMIN PURPOSES
+
+5. Saklolo - POST
+    Address: http://3.15.140.118:3001/api/v1/saklolo
+
+    Requirement to Access
+    Json format:
+        Example Input:
+            {
+            "email_add": "robertchristian.rosales@gmail.com",
+            "reason": "Abuse",
+            "message": "Ako ay na uubuso ng aking amo dito sa Quatar"
+            }
+
+        Responses
+            "Successfully Created a Saklolo Message"
+                {
+                    "error": false,
+                    "message": "Saklolo message created successfully",
+                    "data": 2
+                }
+             "Empty one or more fields"
+                {
+                    "error": true,
+                    "message": "Please provide email, reason, and message"
+                }
+
+
+
+6. Saklolo Messages - GET
+    Address: http://3.15.140.118:3001/api/v1/saklolo/messages
+
+     Requirement to Access
+    Json format:
+        Example Input:
+            {
+                "email_add": "robertchristian.rosales@gmail.com",
+            }
+
+        Responses
+            "Validated email in the database"
+                {
+                    "error": false,
+                    "message": "Saklolo retrieved successfully",
+                    "data": [
+                        {
+                            "reason": "Abuse",
+                            "message": "Ako ay na uubuso ng aking amo dito sa Quatar"
+                        },
+                        {
+                            "reason": "Abuse",
+                            "message": "Ako ay na uubuso ng aking amo dito sa Quatar"
+                        }
+                    ]
+                }
+
+            "Empty field or No email found"
+            {
+                "error": true,
+                "message": "No saklolo found for the provided email"
+            }
